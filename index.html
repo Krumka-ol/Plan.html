@@ -21,30 +21,6 @@
             max-width: 1200px;
             padding: 20px;
         }
-        .loading-spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border-left-color: #1a73e8;
-            animation: spin 1s ease infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .audio-btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 8px;
-            border-radius: 9999px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-        .audio-btn:hover {
-            background-color: #45a049;
-            transform: scale(1.1);
-        }
         .visit-btn {
             background-color: #ef4444; /* red-500 */
             color: white;
@@ -53,9 +29,31 @@
             border-radius: 0.5rem; /* rounded-md */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         .visit-btn:hover {
             background-color: #dc2626; /* red-600 */
+        }
+        .bank-btn {
+            background-color: #3b82f6; /* blue-500 */
+            color: white;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .bank-btn:hover {
+            background-color: #2563eb; /* blue-600 */
         }
     </style>
 </head>
@@ -64,7 +62,7 @@
         <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">План подготовки к профильной математике (2025-2027) 🎓</h1>
         <p class="text-gray-600 mb-4 text-center">План в виде таблицы для удобного просмотра и навигации. Нажмите на любую строку, чтобы получить детальный план по теме. 💡</p>
         <p class="text-gray-600 mb-8 text-center">Для практики и решения задач используйте сайт <a href="https://math-ege.sdamgia.ru/" target="_blank" class="text-red-500 font-semibold hover:underline">Решу ЕГЭ</a>. 🚀</p>
-        
+
         <div class="overflow-x-auto rounded-lg shadow-md mb-8">
             <table id="planTable" class="w-full text-left text-sm text-gray-500 rounded-lg">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -230,7 +228,7 @@
         
         <div class="mt-8 bg-gray-100 p-6 rounded-lg shadow-inner flex flex-col items-center justify-center">
             <h2 class="text-xl font-semibold mb-4 text-gray-800 text-center">Используйте сайт "Решу ЕГЭ" для решения задач 📝</h2>
-            <a href="https://math-ege.sdamgia.ru/" target="_blank" class="visit-btn flex items-center gap-2">
+            <a href="https://math-ege.sdamgia.ru/" target="_blank" class="visit-btn flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                 </svg>
@@ -238,7 +236,7 @@
             </a>
         </div>
 
-        <h2 class="text-xl font-semibold mt-8 mb-4 text-gray-800">Генератор практических материалов ✨</h2>
+        <h2 class="text-xl font-semibold mt-8 mb-4 text-gray-800">Материалы для подготовки ✨</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Секция с советами по обучению -->
             <div class="bg-gray-50 p-6 rounded-lg shadow-inner">
@@ -251,15 +249,6 @@
                 </div>
                 <div id="tipResult" class="mt-4 p-4 bg-white rounded-md border border-gray-200 hidden">
                     <p id="tipText" class="text-gray-700"></p>
-                    <button id="tipAudioBtn" class="audio-btn mt-2 hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-                            <path d="M11.5 5.25a.75.75 0 0 1 .75-.75H20.25a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H12.25a.75.75 0 0 1-.75-.75v-2.639a4.458 4.458 0 0 0 .5-6.521V5.25ZM10.25 10.75a1 1 0 0 0 0 2h-1.5a1 1 0 0 0 0-2h1.5Z" />
-                            <path fill-rule="evenodd" d="M9.196 4.549a1.5 1.5 0 0 0-1.88-1.545l-.47.117A3 3 0 0 0 4.106 5.8L2.25 12.374a3 3 0 0 0 1.03 3.255l1.096.71a.75.75 0 0 1 .154.912l-.084.148a.75.75 0 0 1-.9.23l-1.637-.621A4.5 4.5 0 0 1 1.75 14.078V11.25a1 1 0 0 1 2 0v2.828a.5.5 0 0 0 .17.379l.995.645A1.5 1.5 0 0 0 7.196 15.45l.47-.117a1.5 1.5 0 0 0 1.88 1.545l3.25-1.125a.75.75 0 0 0 .428-.669V7.525a.75.75 0 0 0-.428-.669L9.196 4.55Z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                </div>
-                <div id="tipLoading" class="hidden flex justify-center items-center mt-4">
-                    <div class="loading-spinner"></div>
                 </div>
             </div>
 
@@ -270,38 +259,21 @@
                 <div id="detailedPlan" class="mt-4 p-4 bg-white rounded-md border border-gray-200 hidden">
                     <p class="font-bold text-lg mb-2 text-gray-800">Подробный план для: <span id="detailedTopicName"></span></p>
                     <ul id="planDetailsList" class="list-disc list-inside text-gray-700"></ul>
-                    <button id="planAudioBtn" class="audio-btn mt-2 hidden">
-                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-                            <path d="M11.5 5.25a.75.75 0 0 1 .75-.75H20.25a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H12.25a.75.75 0 0 1-.75-.75v-2.639a4.458 4.458 0 0 0 .5-6.521V5.25ZM10.25 10.75a1 1 0 0 0 0 2h-1.5a1 1 0 0 0 0-2h1.5Z" />
-                            <path fill-rule="evenodd" d="M9.196 4.549a1.5 1.5 0 0 0-1.88-1.545l-.47.117A3 3 0 0 0 4.106 5.8L2.25 12.374a3 3 0 0 0 1.03 3.255l1.096.71a.75.75 0 0 1 .154.912l-.084.148a.75.75 0 0 1-.9.23l-1.637-.621A4.5 4.5 0 0 1 1.75 14.078V11.25a1 1 0 0 1 2 0v2.828a.5.5 0 0 0 .17.379l.995.645A1.5 1.5 0 0 0 7.196 15.45l.47-.117a1.5 1.5 0 0 0 1.88 1.545l3.25-1.125a.75.75 0 0 0 .428-.669V7.525a.75.75 0 0 0-.428-.669L9.196 4.55Z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                </div>
-                <div id="planLoading" class="hidden flex justify-center items-center mt-4">
-                    <div class="loading-spinner"></div>
                 </div>
             </div>
 
-            <!-- Секция для генерации практических задач -->
+            <!-- Секция для банка заданий -->
             <div class="mt-8 bg-gray-50 p-6 rounded-lg shadow-inner md:col-span-2">
-                <h2 class="text-xl font-semibold mb-4 text-gray-800">Генератор практических задач 📚🖊️</h2>
-                <div class="flex flex-col sm:flex-row gap-4 mb-4">
-                    <input type="text" id="problemTopicInput" placeholder="Введите тему (напр. 'тригонометрические уравнения')" class="flex-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <button id="generateProblemBtn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-md transition-colors">
-                        Создать задачу ➕
-                    </button>
-                </div>
-                <div id="problemResult" class="mt-4 p-4 bg-white rounded-md border border-gray-200 hidden">
-                    <p id="problemText" class="text-gray-700"></p>
-                    <button id="problemAudioBtn" class="audio-btn mt-2 hidden">
-                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-                            <path d="M11.5 5.25a.75.75 0 0 1 .75-.75H20.25a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H12.25a.75.75 0 0 1-.75-.75v-2.639a4.458 4.458 0 0 0 .5-6.521V5.25ZM10.25 10.75a1 1 0 0 0 0 2h-1.5a1 1 0 0 0 0-2h1.5Z" />
-                            <path fill-rule="evenodd" d="M9.196 4.549a1.5 1.5 0 0 0-1.88-1.545l-.47.117A3 3 0 0 0 4.106 5.8L2.25 12.374a3 3 0 0 0 1.03 3.255l1.096.71a.75.75 0 0 1 .154.912l-.084.148a.75.75 0 0 1-.9.23l-1.637-.621A4.5 4.5 0 0 1 1.75 14.078V11.25a1 1 0 0 1 2 0v2.828a.5.5 0 0 0 .17.379l.995.645A1.5 1.5 0 0 0 7.196 15.45l.47-.117a1.5 1.5 0 0 0 1.88 1.545l3.25-1.125a.75.75 0 0 0 .428-.669V7.525a.75.75 0 0 0-.428-.669L9.196 4.55Z" clip-rule="evenodd" />
+                <h2 class="text-xl font-semibold mb-4 text-gray-800">Банк заданий для практики 📚</h2>
+                <p class="text-gray-600 mb-4 text-sm text-center">Перейдите на официальный сайт ФИПИ, чтобы решать реальные задания прошлых лет!</p>
+                <div class="flex justify-center mt-4">
+                    <a href="https://ege.fipi.ru/bank/index.php?proj=AC437B34557F88EA4115D2F374B0A07B" target="_blank" class="bank-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.76 0 5.26-1.12 7.08-2.92M12 21c-2.76 0-5.26-1.12-7.08-2.92M10.5 10.5h.008v.008h-.008v-.008ZM15 10.5h.008v.008H15v-.008ZM10.5 14.5h.008v.008h-.008v-.008ZM15 14.5h.008v.008H15v-.008Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 7.5c0-.621-.504-1.125-1.125-1.125H5.625c-.621 0-1.125.504-1.125 1.125v4.5c0 .621.504 1.125 1.125 1.125h3.5v-2.25c0-.621.504-1.125 1.125-1.125h2.5c.621 0 1.125.504 1.125 1.125v2.25h3.5c.621 0 1.125-.504 1.125-1.125v-4.5Z" />
                         </svg>
-                    </button>
-                </div>
-                <div id="problemLoading" class="hidden flex justify-center items-center mt-4">
-                    <div class="loading-spinner"></div>
+                        Перейти к банку заданий
+                    </a>
                 </div>
             </div>
         </div>
@@ -309,288 +281,210 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // UI elements
-            const getTipsBtn = document.getElementById('getTipsBtn');
-            const topicInput = document.getElementById('topicInput');
-            const tipResult = document.getElementById('tipResult');
-            const tipText = document.getElementById('tipText');
-            const tipLoading = document.getElementById('tipLoading');
-            const tipAudioBtn = document.getElementById('tipAudioBtn');
-            
-            const detailedPlan = document.getElementById('detailedPlan');
-            const detailedTopicName = document.getElementById('detailedTopicName');
-            const planDetailsList = document.getElementById('planDetailsList');
-            const planLoading = document.getElementById('planLoading');
-            const planAudioBtn = document.getElementById('planAudioBtn');
-            
-            const problemTopicInput = document.getElementById('problemTopicInput');
-            const generateProblemBtn = document.getElementById('generateProblemBtn');
-            const problemResult = document.getElementById('problemResult');
-            const problemText = document.getElementById('problemText');
-            const problemLoading = document.getElementById('problemLoading');
-            const problemAudioBtn = document.getElementById('problemAudioBtn');
-
-            const planTable = document.getElementById('planTable');
-
-            // --- Helper functions for TTS ---
-            function base64ToArrayBuffer(base64) {
-                const binaryString = window.atob(base64);
-                const len = binaryString.length;
-                const bytes = new Uint8Array(len);
-                for (let i = 0; i < len; i++) {
-                    bytes[i] = binaryString.charCodeAt(i);
+            // Data for study topics and tips
+            const studyData = {
+                'Базовый материал': {
+                    tips: 'Лайфхак: Начинайте с самого простого. Не пытайтесь сразу объять необъятное. Цитата: "Самый большой секрет успеха — это последовательность." (Уильям Кэри)',
+                    plan: [
+                        'Повторение основных понятий: дроби, проценты, пропорции.',
+                        'Работа с алгебраическими выражениями и формулами сокращенного умножения.',
+                        'Изучение простых геометрических фигур и их свойств.',
+                        'Решение задач на движение и работу.'
+                    ]
+                },
+                'Планиметрия': {
+                    tips: 'Лайфхак: Визуализируйте! Рисуйте чертежи разных масштабов, чтобы увидеть неочевидные связи. Цитата: "Геометрия — это искусство хорошего рассуждения на плохих чертежах." (Георг Пойа)',
+                    plan: [
+                        'Изучение основных теорем: теорема Пифагора, теорема синусов и косинусов.',
+                        'Работа с подобием и равенством треугольников.',
+                        'Решение задач на площади и периметры многоугольников.',
+                        'Изучение свойств окружности и ее элементов.'
+                    ]
+                },
+                'Векторы': {
+                    tips: 'Лайфхак: Представляйте векторы как стрелки, которые двигают объекты. Так их сложение и вычитание станет интуитивно понятным. Цитата: "Образование — это то, что остается после того, как забываешь все, чему учили в школе." (Альберт Эйнштейн)',
+                    plan: [
+                        'Определение вектора, его координаты.',
+                        'Операции над векторами: сложение, вычитание, умножение на число.',
+                        'Скалярное произведение векторов и его свойства.',
+                        'Применение векторов для решения геометрических задач.'
+                    ]
+                },
+                'Стереометрия': {
+                    tips: 'Лайфхак: Используйте 3D-модели (даже из бумаги), чтобы лучше понять пространственные фигуры и сечения. Цитата: "Математика — это язык, на котором написана Вселенная." (Галилео Галилей)',
+                    plan: [
+                        'Основные понятия: плоскости, прямые в пространстве.',
+                        'Взаимное расположение прямых и плоскостей.',
+                        'Многогранники: призмы, пирамиды, кубы.',
+                        'Тела вращения: цилиндр, конус, шар.',
+                        'Вычисление объемов и площадей поверхностей.'
+                    ]
+                },
+                'Вероятность': {
+                    tips: 'Лайфхак: Начинайте с простых событий. Если задача кажется сложной, разбейте её на мелкие, более управляемые части. Цитата: "Удача — это то, что происходит, когда подготовка встречается с возможностью." (Сенека)',
+                    plan: [
+                        'Определение вероятности, комбинаторика.',
+                        'Сложение и умножение вероятностей.',
+                        'Зависимые и независимые события.',
+                        'Решение задач на условную вероятность.'
+                    ]
+                },
+                'Уравнения': {
+                    tips: 'Лайфхак: Всегда проверяйте свои ответы! Подстановка корня обратно в уравнение — самый надежный способ избежать ошибок. Цитата: "Невозможное сегодня станет возможным завтра." (Константин Циолковский)',
+                    plan: [
+                        'Линейные и квадратные уравнения.',
+                        'Иррациональные уравнения.',
+                        'Показательные и логарифмические уравнения.',
+                        'Тригонометрические уравнения и отбор корней.'
+                    ]
+                },
+                'Вычисления и преобразования': {
+                    tips: 'Лайфхак: Заведите блокнот с формулами. Чем чаще вы будете их переписывать, тем лучше они запомнятся. Цитата: "Знание — сила." (Фрэнсис Бэкон)',
+                    plan: [
+                        'Преобразование рациональных выражений.',
+                        'Работа со степенями и логарифмами.',
+                        'Тригонометрические преобразования.',
+                        'Смешанные задачи на преобразования.'
+                    ]
+                },
+                'Производная и первообразная': {
+                    tips: 'Лайфхак: Поймите, что производная показывает скорость изменения, а первообразная — накопление. Это ключевой момент для интуитивного понимания. Цитата: "Единственный путь сделать великую работу — это любить то, что делаешь." (Стив Джобс)',
+                    plan: [
+                        'Определение производной, правила дифференцирования.',
+                        'Геометрический и физический смысл производной.',
+                        'Первообразная и интеграл.',
+                        'Применение производной для нахождения экстремумов функций.'
+                    ]
+                },
+                'Неравенства': {
+                    tips: 'Лайфхак: Всегда помните про область допустимых значений (ОДЗ) и не забывайте про смену знака при умножении на отрицательное число. Цитата: "Невозможно — это всего лишь громкое слово, за которым прячутся маленькие люди." (Мухаммед Али)',
+                    plan: [
+                        'Линейные и квадратные неравенства.',
+                        'Дробно-рациональные неравенства.',
+                        'Показательные и логарифмические неравенства.',
+                        'Системы неравенств.'
+                    ]
+                },
+                'Текстовые задачи': {
+                    tips: 'Лайфхак: Составляйте схемы или таблицы. Так вы структурируете все данные и увидите решение. Цитата: "Большой путь начинается с первого шага." (Лао-цзы)',
+                    plan: [
+                        'Задачи на движение: по прямой, по реке, по окружности.',
+                        'Задачи на работу и производительность.',
+                        'Задачи на смеси и сплавы.',
+                        'Задачи на проценты и банковские вклады.'
+                    ]
+                },
+                'Графики функций': {
+                    tips: 'Лайфхак: Постройте несколько ключевых точек, чтобы понять форму графика. Это поможет избежать ошибок при анализе. Цитата: "Кризис — это возможность, одетая в рабочий комбинезон." (Билл Гейтс)',
+                    plan: [
+                        'Линейные, квадратичные, степенные функции и их графики.',
+                        'Показательная и логарифмическая функции.',
+                        'Тригонометрические функции.',
+                        'Исследование функции с помощью производной.'
+                    ]
+                },
+                'Повторение': {
+                    tips: 'Лайфхак: Делайте короткие перерывы во время повторения. Это поможет мозгу лучше усваивать информацию. Цитата: "Практика не делает совершенным, она делает постоянным." (Брюс Ли)',
+                    plan: [
+                        'Решение пробных вариантов ЕГЭ из прошлых лет.',
+                        'Изучение разбора задач из второй части.',
+                        'Выделение слабых мест и их проработка.',
+                        'Повторение формул и теорем.'
+                    ]
+                },
+                'Вторая часть': {
+                    tips: 'Лайфхак: Разбивайте сложные задачи на несколько простых этапов. И помните, что за каждый этап дают баллы. Цитата: "Дорога в тысячу миль начинается с одного шага." (Лао-цзы)',
+                    plan: [
+                        'Изучение методов решения задач повышенной сложности.',
+                        'Подробный разбор заданий 13-19.',
+                        'Практика в оформлении решений.',
+                        'Разбор критериев оценивания.'
+                    ]
                 }
-                return bytes.buffer;
-            }
+            };
 
-            function pcmToWav(pcmData, sampleRate) {
-                const buffer = new ArrayBuffer(44 + pcmData.length * 2);
-                const view = new DataView(buffer);
-                const pcm16 = new Int16Array(pcmData);
-
-                // RIFF chunk descriptor
-                writeString(view, 0, 'RIFF');
-                view.setUint32(4, 36 + pcmData.length * 2, true);
-                writeString(view, 8, 'WAVE');
-
-                // fmt sub-chunk
-                writeString(view, 12, 'fmt ');
-                view.setUint32(16, 16, true);
-                view.setUint16(20, 1, true); // Linear PCM
-                view.setUint16(22, 1, true); // Mono
-                view.setUint32(24, sampleRate, true);
-                view.setUint32(28, sampleRate * 2, true);
-                view.setUint16(32, 2, true);
-                view.setUint16(34, 16, true); // 16 bits per sample
-
-                // data sub-chunk
-                writeString(view, 36, 'data');
-                view.setUint32(40, pcmData.length * 2, true);
-
-                // Write PCM data
-                for (let i = 0; i < pcm16.length; i++) {
-                    view.setInt16(44 + i * 2, pcm16[i], true);
-                }
-
-                return new Blob([view], { type: 'audio/wav' });
-            }
-
-            function writeString(view, offset, string) {
-                for (let i = 0; i < string.length; i++) {
-                    view.setUint8(offset + i, string.charCodeAt(i));
-                }
-            }
-
-            // --- Gemini API functions ---
-
-            // Function to generate study tip
-            async function generateStudyTip() {
-                const prompt = `Дай короткий, полезный и конкретный совет по изучению профильной математики на тему "${topicInput.value}". Совет должен быть в виде одного-двух предложений и направлен на улучшение практических навыков.`;
+            try {
+                // UI elements
+                const getTipsBtn = document.getElementById('getTipsBtn');
+                const topicInput = document.getElementById('topicInput');
+                const tipResult = document.getElementById('tipResult');
+                const tipText = document.getElementById('tipText');
                 
-                tipResult.classList.add('hidden');
-                tipLoading.classList.remove('hidden');
-                tipAudioBtn.classList.add('hidden');
-
-                const chatHistory = [];
-                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-                const payload = { contents: chatHistory };
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    
-                    const result = await response.json();
-                    const text = result.candidates[0].content.parts[0].text;
-                    tipText.textContent = text;
-                    tipResult.classList.remove('hidden');
-                    tipAudioBtn.classList.remove('hidden');
-                } catch (error) {
-                    console.error('Error fetching study tip:', error);
-                    tipText.textContent = 'Не удалось получить совет. Пожалуйста, попробуйте еще раз.';
-                    tipResult.classList.remove('hidden');
-                } finally {
-                    tipLoading.classList.add('hidden');
-                }
-            }
-            
-            // Function to generate detailed plan
-            async function generateDetailedPlan(topic) {
-                const prompt = `Разбей тему "${topic}" из профильной математики на 5-7 ключевых подтем или шагов для изучения. Ответ предоставь в виде маркированного списка. Используй только русский язык.`;
+                const detailedPlan = document.getElementById('detailedPlan');
+                const detailedTopicName = document.getElementById('detailedTopicName');
+                const planDetailsList = document.getElementById('planDetailsList');
                 
-                detailedPlan.classList.add('hidden');
-                planLoading.classList.remove('hidden');
-                planAudioBtn.classList.add('hidden');
-                
-                detailedTopicName.textContent = topic;
-                planDetailsList.innerHTML = '';
+                const planTable = document.getElementById('planTable');
 
-                const chatHistory = [];
-                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-                const payload = { contents: chatHistory };
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                // --- Event handlers ---
 
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
+                // Function to get and display study tip
+                function getStudyTip() {
+                    const topic = topicInput.value.toLowerCase().trim();
+                    let tip = 'К сожалению, по этой теме пока нет советов. Попробуйте ввести одну из тем из таблицы!';
+                    let found = false;
 
-                    const result = await response.json();
-                    const text = result.candidates[0].content.parts[0].text;
-                    
-                    // Parse bulleted list
-                    const listItems = text.split('\n').filter(item => item.trim() !== '');
-                    listItems.forEach(item => {
-                        const li = document.createElement('li');
-                        li.textContent = item.replace(/^- /, '').replace(/^\* /, '').trim();
-                        planDetailsList.appendChild(li);
-                    });
-
-                    detailedPlan.classList.remove('hidden');
-                    planAudioBtn.classList.remove('hidden');
-                } catch (error) {
-                    console.error('Error fetching detailed plan:', error);
-                    planDetailsList.innerHTML = '<li>Не удалось получить подробный план. Пожалуйста, попробуйте еще раз.</li>';
-                    detailedPlan.classList.remove('hidden');
-                } finally {
-                    planLoading.classList.add('hidden');
-                }
-            }
-
-            // Function to generate practice problem
-            async function generatePracticeProblem() {
-                const prompt = `Сгенерируй одну сложную задачу по профильной математике на тему "${problemTopicInput.value}". Включи в задачу все необходимые данные для ее решения. Не предоставляй решение, только формулировку задачи. Используй только русский язык. Убедись, что задача уникальна.`;
-                
-                problemResult.classList.add('hidden');
-                problemLoading.classList.remove('hidden');
-                problemAudioBtn.classList.add('hidden');
-
-                const chatHistory = [];
-                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-                const payload = { contents: chatHistory };
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-
-                    const result = await response.json();
-                    const text = result.candidates[0].content.parts[0].text;
-                    problemText.textContent = text;
-                    problemResult.classList.remove('hidden');
-                    problemAudioBtn.classList.remove('hidden');
-                } catch (error) {
-                    console.error('Error fetching practice problem:', error);
-                    problemText.textContent = 'Не удалось сгенерировать задачу. Пожалуйста, попробуйте еще раз.';
-                    problemResult.classList.remove('hidden');
-                } finally {
-                    problemLoading.classList.add('hidden');
-                }
-            }
-
-            // Function to generate and play TTS
-            async function generateAndPlayTTS(textToSpeak) {
-                const payload = {
-                    contents: [{
-                        parts: [{ text: textToSpeak }]
-                    }],
-                    generationConfig: {
-                        responseModalities: ["AUDIO"],
-                        speechConfig: {
-                            voiceConfig: {
-                                prebuiltVoiceConfig: { voiceName: "Puck" }
-                            }
+                    // Simple search in data keys
+                    for (const key in studyData) {
+                        if (key.toLowerCase().includes(topic)) {
+                            tip = studyData[key].tips;
+                            found = true;
+                            break;
                         }
-                    },
-                    model: "gemini-2.5-flash-preview-tts"
-                };
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
-
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
                     
-                    const result = await response.json();
-                    const part = result?.candidates?.[0]?.content?.parts?.[0];
-                    const audioData = part?.inlineData?.data;
-                    const mimeType = part?.inlineData?.mimeType;
+                    if (!found && topic === 'тригонометрия') {
+                        tip = 'При решении тригонометрических уравнений всегда используйте формулы приведения и помните про основные тригонометрические тождества. Это поможет упростить выражение. Цитата: "Знание — сила." (Фрэнсис Бэкон)';
+                    }
 
-                    if (audioData && mimeType && mimeType.startsWith("audio/")) {
-                        const sampleRate = parseInt(mimeType.match(/rate=(\d+)/)[1], 10);
-                        const pcmData = base64ToArrayBuffer(audioData);
-                        const pcm16 = new Int16Array(pcmData);
-                        const wavBlob = pcmToWav(pcm16, sampleRate);
-                        const audioUrl = URL.createObjectURL(wavBlob);
-                        
-                        const audio = new Audio(audioUrl);
-                        audio.play();
+                    tipText.textContent = tip;
+                    tipResult.classList.remove('hidden');
+                }
+                
+                // Function to display detailed plan from data
+                function displayDetailedPlan(topic) {
+                    const data = studyData[topic];
+                    
+                    if (data && data.plan) {
+                        detailedTopicName.textContent = topic;
+                        planDetailsList.innerHTML = '';
+                        data.plan.forEach(item => {
+                            const li = document.createElement('li');
+                            li.textContent = item;
+                            planDetailsList.appendChild(li);
+                        });
+                        detailedPlan.classList.remove('hidden');
                     } else {
-                        throw new Error('Invalid audio data from API');
+                        detailedTopicName.textContent = topic;
+                        planDetailsList.innerHTML = '<li>К сожалению, подробный план по этой теме не найден.</li>';
+                        detailedPlan.classList.remove('hidden');
                     }
-                } catch (error) {
-                    console.error('Error generating and playing TTS:', error);
                 }
+
+                // Add event listeners
+                if (getTipsBtn) {
+                    getTipsBtn.addEventListener('click', getStudyTip);
+                }
+
+                // Handle table row clicks
+                if (planTable) {
+                    planTable.querySelectorAll('tbody tr').forEach(row => {
+                        row.addEventListener('click', () => {
+                            const topic = row.getAttribute('data-topic');
+                            if (topic) {
+                                displayDetailedPlan(topic);
+                            }
+                        });
+                    });
+                }
+            } catch (error) {
+                // Display a user-friendly error message if the script fails
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'mt-4 p-4 bg-red-100 rounded-md border border-red-400 text-red-700';
+                errorDiv.textContent = 'Ошибка: Не удалось загрузить интерактивные элементы. Пожалуйста, убедитесь, что ваш браузер не блокирует скрипты.';
+                document.querySelector('.container').appendChild(errorDiv);
+                console.error('An error occurred during script execution:', error);
             }
-
-            // Event handlers
-            getTipsBtn.addEventListener('click', generateStudyTip);
-            generateProblemBtn.addEventListener('click', generatePracticeProblem);
-
-            tipAudioBtn.addEventListener('click', () => {
-                generateAndPlayTTS(tipText.textContent);
-            });
-            planAudioBtn.addEventListener('click', () => {
-                let textToSpeak = `Подробный план для ${detailedTopicName.textContent}. `;
-                const listItems = planDetailsList.getElementsByTagName('li');
-                for (let i = 0; i < listItems.length; i++) {
-                    textToSpeak += listItems[i].textContent + '. ';
-                }
-                generateAndPlayTTS(textToSpeak);
-            });
-            problemAudioBtn.addEventListener('click', () => {
-                generateAndPlayTTS(problemText.textContent);
-            });
-
-            // Handle table row clicks
-            planTable.querySelectorAll('tbody tr').forEach(row => {
-                row.addEventListener('click', () => {
-                    const topic = row.getAttribute('data-topic');
-                    if (topic) {
-                        generateDetailedPlan(topic);
-                    }
-                });
-            });
         });
     </script>
 </body>
