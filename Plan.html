@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>План подготовки в виде таблицы</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #1a73e8;
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .audio-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px;
+            border-radius: 9999px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        .audio-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+        .visit-btn {
+            background-color: #ef4444; /* red-500 */
+            color: white;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 0.5rem; /* rounded-md */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        .visit-btn:hover {
+            background-color: #dc2626; /* red-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="container bg-white rounded-xl p-8 shadow-2xl">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">План подготовки к профильной математике (2025-2027) 🎓</h1>
+        <p class="text-gray-600 mb-4 text-center">План в виде таблицы для удобного просмотра и навигации. Нажмите на любую строку, чтобы получить детальный план по теме. 💡</p>
+        <p class="text-gray-600 mb-8 text-center">Для практики и решения задач используйте сайт <a href="https://math-ege.sdamgia.ru/" target="_blank" class="text-red-500 font-semibold hover:underline">Решу ЕГЭ</a>. 🚀</p>
+        
+        <div class="overflow-x-auto rounded-lg shadow-md mb-8">
+            <table id="planTable" class="w-full text-left text-sm text-gray-500 rounded-lg">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Тема 📚
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Период 🗓️
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Задания ЕГЭ ✅
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Базовый материал">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Повтор базового материала
+                        </th>
+                        <td class="px-6 py-4">
+                            Август-Сентябрь 2025
+                        </td>
+                        <td class="px-6 py-4">
+                            -
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Планиметрия">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Планиметрия (новые формулы, углубленное построение)
+                        </th>
+                        <td class="px-6 py-4">
+                            1-2 неделя Сентября 2025
+                        </td>
+                        <td class="px-6 py-4">
+                            1
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Векторы">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Векторы (новые формулы, новый счет, построение)
+                        </th>
+                        <td class="px-6 py-4">
+                            Сентябрь-Октябрь 2025
+                        </td>
+                        <td class="px-6 py-4">
+                            2
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Стереометрия">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Стереометрия (новое построение, формулы)
+                        </th>
+                        <td class="px-6 py-4">
+                            Октябрь-Ноябрь 2025
+                        </td>
+                        <td class="px-6 py-4">
+                            3
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Вероятность">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Вероятность
+                        </th>
+                        <td class="px-6 py-4">
+                            Сентябрь-Ноябрь 2025
+                        </td>
+                        <td class="px-6 py-4">
+                            4, 5
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Уравнения">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Уравнения
+                        </th>
+                        <td class="px-6 py-4">
+                            Сентябрь 2025 - Март 2026
+                        </td>
+                        <td class="px-6 py-4">
+                            6
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Вычисления и преобразования">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Вычисления и преобразования
+                        </th>
+                        <td class="px-6 py-4">
+                            Сентябрь 2025 - Март 2026
+                        </td>
+                        <td class="px-6 py-4">
+                            7
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Производная и первообразная">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Производная и первообразная
+                        </th>
+                        <td class="px-6 py-4">
+                            С Февраля 2026
+                        </td>
+                        <td class="px-6 py-4">
+                            8
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Неравенства">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Многочисленные неравенства разных видов
+                        </th>
+                        <td class="px-6 py-4">
+                            Сентябрь 2025 - Март 2026
+                        </td>
+                        <td class="px-6 py-4">
+                            9
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Текстовые задачи">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Текстовые задачи
+                        </th>
+                        <td class="px-6 py-4">
+                            Сентябрь 2025 - Апрель 2026; Сентябрь 2026 - Май 2027
+                        </td>
+                        <td class="px-6 py-4">
+                            10
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Графики функций">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Графики функций
+                        </th>
+                        <td class="px-6 py-4">
+                            Сентябрь 2025 - Март 2026
+                        </td>
+                        <td class="px-6 py-4">
+                            11, 12
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Повторение">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Повтор материала
+                        </th>
+                        <td class="px-6 py-4">
+                            Начало Августа 2026
+                        </td>
+                        <td class="px-6 py-4">
+                            -
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Вторая часть">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Подготовка ко 2-й части
+                        </th>
+                        <td class="px-6 py-4">
+                            Сентябрь 2026 - Май 2027
+                        </td>
+                        <td class="px-6 py-4">
+                            13, 14, 15, 16, 17, 18, 19
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="mt-8 bg-gray-100 p-6 rounded-lg shadow-inner flex flex-col items-center justify-center">
+            <h2 class="text-xl font-semibold mb-4 text-gray-800 text-center">Используйте сайт "Решу ЕГЭ" для решения задач 📝</h2>
+            <a href="https://math-ege.sdamgia.ru/" target="_blank" class="visit-btn flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+                Перейти на сайт
+            </a>
+        </div>
+
+        <h2 class="text-xl font-semibold mt-8 mb-4 text-gray-800">Генератор практических материалов ✨</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Секция с советами по обучению -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-4 text-gray-800">Получить советы по обучению 🧠</h2>
+                <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                    <input type="text" id="topicInput" placeholder="Введите тему (напр. 'стереометрия')" class="flex-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button id="getTipsBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md transition-colors">
+                        Получить совет ✨
+                    </button>
+                </div>
+                <div id="tipResult" class="mt-4 p-4 bg-white rounded-md border border-gray-200 hidden">
+                    <p id="tipText" class="text-gray-700"></p>
+                    <button id="tipAudioBtn" class="audio-btn mt-2 hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                            <path d="M11.5 5.25a.75.75 0 0 1 .75-.75H20.25a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H12.25a.75.75 0 0 1-.75-.75v-2.639a4.458 4.458 0 0 0 .5-6.521V5.25ZM10.25 10.75a1 1 0 0 0 0 2h-1.5a1 1 0 0 0 0-2h1.5Z" />
+                            <path fill-rule="evenodd" d="M9.196 4.549a1.5 1.5 0 0 0-1.88-1.545l-.47.117A3 3 0 0 0 4.106 5.8L2.25 12.374a3 3 0 0 0 1.03 3.255l1.096.71a.75.75 0 0 1 .154.912l-.084.148a.75.75 0 0 1-.9.23l-1.637-.621A4.5 4.5 0 0 1 1.75 14.078V11.25a1 1 0 0 1 2 0v2.828a.5.5 0 0 0 .17.379l.995.645A1.5 1.5 0 0 0 7.196 15.45l.47-.117a1.5 1.5 0 0 0 1.88 1.545l3.25-1.125a.75.75 0 0 0 .428-.669V7.525a.75.75 0 0 0-.428-.669L9.196 4.55Z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="tipLoading" class="hidden flex justify-center items-center mt-4">
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+
+            <!-- Секция для генерации подробного плана -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-4 text-gray-800">Детальный план по теме 🗺️</h2>
+                <p class="text-gray-600 mb-4 text-sm">Нажмите на любую строку в таблице, чтобы получить подробный список подтем! 👇</p>
+                <div id="detailedPlan" class="mt-4 p-4 bg-white rounded-md border border-gray-200 hidden">
+                    <p class="font-bold text-lg mb-2 text-gray-800">Подробный план для: <span id="detailedTopicName"></span></p>
+                    <ul id="planDetailsList" class="list-disc list-inside text-gray-700"></ul>
+                    <button id="planAudioBtn" class="audio-btn mt-2 hidden">
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                            <path d="M11.5 5.25a.75.75 0 0 1 .75-.75H20.25a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H12.25a.75.75 0 0 1-.75-.75v-2.639a4.458 4.458 0 0 0 .5-6.521V5.25ZM10.25 10.75a1 1 0 0 0 0 2h-1.5a1 1 0 0 0 0-2h1.5Z" />
+                            <path fill-rule="evenodd" d="M9.196 4.549a1.5 1.5 0 0 0-1.88-1.545l-.47.117A3 3 0 0 0 4.106 5.8L2.25 12.374a3 3 0 0 0 1.03 3.255l1.096.71a.75.75 0 0 1 .154.912l-.084.148a.75.75 0 0 1-.9.23l-1.637-.621A4.5 4.5 0 0 1 1.75 14.078V11.25a1 1 0 0 1 2 0v2.828a.5.5 0 0 0 .17.379l.995.645A1.5 1.5 0 0 0 7.196 15.45l.47-.117a1.5 1.5 0 0 0 1.88 1.545l3.25-1.125a.75.75 0 0 0 .428-.669V7.525a.75.75 0 0 0-.428-.669L9.196 4.55Z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="planLoading" class="hidden flex justify-center items-center mt-4">
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+
+            <!-- Секция для генерации практических задач -->
+            <div class="mt-8 bg-gray-50 p-6 rounded-lg shadow-inner md:col-span-2">
+                <h2 class="text-xl font-semibold mb-4 text-gray-800">Генератор практических задач 📚🖊️</h2>
+                <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                    <input type="text" id="problemTopicInput" placeholder="Введите тему (напр. 'тригонометрические уравнения')" class="flex-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button id="generateProblemBtn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-md transition-colors">
+                        Создать задачу ➕
+                    </button>
+                </div>
+                <div id="problemResult" class="mt-4 p-4 bg-white rounded-md border border-gray-200 hidden">
+                    <p id="problemText" class="text-gray-700"></p>
+                    <button id="problemAudioBtn" class="audio-btn mt-2 hidden">
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                            <path d="M11.5 5.25a.75.75 0 0 1 .75-.75H20.25a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H12.25a.75.75 0 0 1-.75-.75v-2.639a4.458 4.458 0 0 0 .5-6.521V5.25ZM10.25 10.75a1 1 0 0 0 0 2h-1.5a1 1 0 0 0 0-2h1.5Z" />
+                            <path fill-rule="evenodd" d="M9.196 4.549a1.5 1.5 0 0 0-1.88-1.545l-.47.117A3 3 0 0 0 4.106 5.8L2.25 12.374a3 3 0 0 0 1.03 3.255l1.096.71a.75.75 0 0 1 .154.912l-.084.148a.75.75 0 0 1-.9.23l-1.637-.621A4.5 4.5 0 0 1 1.75 14.078V11.25a1 1 0 0 1 2 0v2.828a.5.5 0 0 0 .17.379l.995.645A1.5 1.5 0 0 0 7.196 15.45l.47-.117a1.5 1.5 0 0 0 1.88 1.545l3.25-1.125a.75.75 0 0 0 .428-.669V7.525a.75.75 0 0 0-.428-.669L9.196 4.55Z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="problemLoading" class="hidden flex justify-center items-center mt-4">
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // UI elements
+            const getTipsBtn = document.getElementById('getTipsBtn');
+            const topicInput = document.getElementById('topicInput');
+            const tipResult = document.getElementById('tipResult');
+            const tipText = document.getElementById('tipText');
+            const tipLoading = document.getElementById('tipLoading');
+            const tipAudioBtn = document.getElementById('tipAudioBtn');
+            
+            const detailedPlan = document.getElementById('detailedPlan');
+            const detailedTopicName = document.getElementById('detailedTopicName');
+            const planDetailsList = document.getElementById('planDetailsList');
+            const planLoading = document.getElementById('planLoading');
+            const planAudioBtn = document.getElementById('planAudioBtn');
+            
+            const problemTopicInput = document.getElementById('problemTopicInput');
+            const generateProblemBtn = document.getElementById('generateProblemBtn');
+            const problemResult = document.getElementById('problemResult');
+            const problemText = document.getElementById('problemText');
+            const problemLoading = document.getElementById('problemLoading');
+            const problemAudioBtn = document.getElementById('problemAudioBtn');
+
+            const planTable = document.getElementById('planTable');
+
+            // --- Helper functions for TTS ---
+            function base64ToArrayBuffer(base64) {
+                const binaryString = window.atob(base64);
+                const len = binaryString.length;
+                const bytes = new Uint8Array(len);
+                for (let i = 0; i < len; i++) {
+                    bytes[i] = binaryString.charCodeAt(i);
+                }
+                return bytes.buffer;
+            }
+
+            function pcmToWav(pcmData, sampleRate) {
+                const buffer = new ArrayBuffer(44 + pcmData.length * 2);
+                const view = new DataView(buffer);
+                const pcm16 = new Int16Array(pcmData);
+
+                // RIFF chunk descriptor
+                writeString(view, 0, 'RIFF');
+                view.setUint32(4, 36 + pcmData.length * 2, true);
+                writeString(view, 8, 'WAVE');
+
+                // fmt sub-chunk
+                writeString(view, 12, 'fmt ');
+                view.setUint32(16, 16, true);
+                view.setUint16(20, 1, true); // Linear PCM
+                view.setUint16(22, 1, true); // Mono
+                view.setUint32(24, sampleRate, true);
+                view.setUint32(28, sampleRate * 2, true);
+                view.setUint16(32, 2, true);
+                view.setUint16(34, 16, true); // 16 bits per sample
+
+                // data sub-chunk
+                writeString(view, 36, 'data');
+                view.setUint32(40, pcmData.length * 2, true);
+
+                // Write PCM data
+                for (let i = 0; i < pcm16.length; i++) {
+                    view.setInt16(44 + i * 2, pcm16[i], true);
+                }
+
+                return new Blob([view], { type: 'audio/wav' });
+            }
+
+            function writeString(view, offset, string) {
+                for (let i = 0; i < string.length; i++) {
+                    view.setUint8(offset + i, string.charCodeAt(i));
+                }
+            }
+
+            // --- Gemini API functions ---
+
+            // Function to generate study tip
+            async function generateStudyTip() {
+                const prompt = `Дай короткий, полезный и конкретный совет по изучению профильной математики на тему "${topicInput.value}". Совет должен быть в виде одного-двух предложений и направлен на улучшение практических навыков.`;
+                
+                tipResult.classList.add('hidden');
+                tipLoading.classList.remove('hidden');
+                tipAudioBtn.classList.add('hidden');
+
+                const chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const result = await response.json();
+                    const text = result.candidates[0].content.parts[0].text;
+                    tipText.textContent = text;
+                    tipResult.classList.remove('hidden');
+                    tipAudioBtn.classList.remove('hidden');
+                } catch (error) {
+                    console.error('Error fetching study tip:', error);
+                    tipText.textContent = 'Не удалось получить совет. Пожалуйста, попробуйте еще раз.';
+                    tipResult.classList.remove('hidden');
+                } finally {
+                    tipLoading.classList.add('hidden');
+                }
+            }
+            
+            // Function to generate detailed plan
+            async function generateDetailedPlan(topic) {
+                const prompt = `Разбей тему "${topic}" из профильной математики на 5-7 ключевых подтем или шагов для изучения. Ответ предоставь в виде маркированного списка. Используй только русский язык.`;
+                
+                detailedPlan.classList.add('hidden');
+                planLoading.classList.remove('hidden');
+                planAudioBtn.classList.add('hidden');
+                
+                detailedTopicName.textContent = topic;
+                planDetailsList.innerHTML = '';
+
+                const chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    const text = result.candidates[0].content.parts[0].text;
+                    
+                    // Parse bulleted list
+                    const listItems = text.split('\n').filter(item => item.trim() !== '');
+                    listItems.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item.replace(/^- /, '').replace(/^\* /, '').trim();
+                        planDetailsList.appendChild(li);
+                    });
+
+                    detailedPlan.classList.remove('hidden');
+                    planAudioBtn.classList.remove('hidden');
+                } catch (error) {
+                    console.error('Error fetching detailed plan:', error);
+                    planDetailsList.innerHTML = '<li>Не удалось получить подробный план. Пожалуйста, попробуйте еще раз.</li>';
+                    detailedPlan.classList.remove('hidden');
+                } finally {
+                    planLoading.classList.add('hidden');
+                }
+            }
+
+            // Function to generate practice problem
+            async function generatePracticeProblem() {
+                const prompt = `Сгенерируй одну сложную задачу по профильной математике на тему "${problemTopicInput.value}". Включи в задачу все необходимые данные для ее решения. Не предоставляй решение, только формулировку задачи. Используй только русский язык. Убедись, что задача уникальна.`;
+                
+                problemResult.classList.add('hidden');
+                problemLoading.classList.remove('hidden');
+                problemAudioBtn.classList.add('hidden');
+
+                const chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    const text = result.candidates[0].content.parts[0].text;
+                    problemText.textContent = text;
+                    problemResult.classList.remove('hidden');
+                    problemAudioBtn.classList.remove('hidden');
+                } catch (error) {
+                    console.error('Error fetching practice problem:', error);
+                    problemText.textContent = 'Не удалось сгенерировать задачу. Пожалуйста, попробуйте еще раз.';
+                    problemResult.classList.remove('hidden');
+                } finally {
+                    problemLoading.classList.add('hidden');
+                }
+            }
+
+            // Function to generate and play TTS
+            async function generateAndPlayTTS(textToSpeak) {
+                const payload = {
+                    contents: [{
+                        parts: [{ text: textToSpeak }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            voiceConfig: {
+                                prebuiltVoiceConfig: { voiceName: "Puck" }
+                            }
+                        }
+                    },
+                    model: "gemini-2.5-flash-preview-tts"
+                };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const result = await response.json();
+                    const part = result?.candidates?.[0]?.content?.parts?.[0];
+                    const audioData = part?.inlineData?.data;
+                    const mimeType = part?.inlineData?.mimeType;
+
+                    if (audioData && mimeType && mimeType.startsWith("audio/")) {
+                        const sampleRate = parseInt(mimeType.match(/rate=(\d+)/)[1], 10);
+                        const pcmData = base64ToArrayBuffer(audioData);
+                        const pcm16 = new Int16Array(pcmData);
+                        const wavBlob = pcmToWav(pcm16, sampleRate);
+                        const audioUrl = URL.createObjectURL(wavBlob);
+                        
+                        const audio = new Audio(audioUrl);
+                        audio.play();
+                    } else {
+                        throw new Error('Invalid audio data from API');
+                    }
+                } catch (error) {
+                    console.error('Error generating and playing TTS:', error);
+                }
+            }
+
+            // Event handlers
+            getTipsBtn.addEventListener('click', generateStudyTip);
+            generateProblemBtn.addEventListener('click', generatePracticeProblem);
+
+            tipAudioBtn.addEventListener('click', () => {
+                generateAndPlayTTS(tipText.textContent);
+            });
+            planAudioBtn.addEventListener('click', () => {
+                let textToSpeak = `Подробный план для ${detailedTopicName.textContent}. `;
+                const listItems = planDetailsList.getElementsByTagName('li');
+                for (let i = 0; i < listItems.length; i++) {
+                    textToSpeak += listItems[i].textContent + '. ';
+                }
+                generateAndPlayTTS(textToSpeak);
+            });
+            problemAudioBtn.addEventListener('click', () => {
+                generateAndPlayTTS(problemText.textContent);
+            });
+
+            // Handle table row clicks
+            planTable.querySelectorAll('tbody tr').forEach(row => {
+                row.addEventListener('click', () => {
+                    const topic = row.getAttribute('data-topic');
+                    if (topic) {
+                        generateDetailedPlan(topic);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
