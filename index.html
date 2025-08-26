@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>План подготовки в виде таблицы</title>
+    <title>План подготовки в виде таблицы (React)</title>
+    <!-- Tailwind CSS CDN для стилей -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts для красивого шрифта -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- React и ReactDOM CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel для преобразования JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -21,267 +28,16 @@
             max-width: 1200px;
             padding: 20px;
         }
-        .visit-btn {
-            background-color: #ef4444; /* red-500 */
-            color: white;
-            font-weight: bold;
-            padding: 12px 24px;
-            border-radius: 0.5rem; /* rounded-md */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .visit-btn:hover {
-            background-color: #dc2626; /* red-600 */
-        }
-        .bank-btn {
-            background-color: #3b82f6; /* blue-500 */
-            color: white;
-            font-weight: bold;
-            padding: 12px 24px;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .bank-btn:hover {
-            background-color: #2563eb; /* blue-600 */
-        }
     </style>
 </head>
 <body class="bg-gray-100 p-8">
-    <div class="container bg-white rounded-xl p-8 shadow-2xl">
-        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">План подготовки к профильной математике (2025-2027) 🎓</h1>
-        <p class="text-gray-600 mb-4 text-center">План в виде таблицы для удобного просмотра и навигации. Нажмите на любую строку, чтобы получить детальный план по теме. 💡</p>
-        <p class="text-gray-600 mb-8 text-center">Для практики и решения задач используйте сайт <a href="https://math-ege.sdamgia.ru/" target="_blank" class="text-red-500 font-semibold hover:underline">Решу ЕГЭ</a>. 🚀</p>
+    <!-- Место, куда будет монтироваться наше React-приложение -->
+    <div id="root"></div>
 
-        <div class="overflow-x-auto rounded-lg shadow-md mb-8">
-            <table id="planTable" class="w-full text-left text-sm text-gray-500 rounded-lg">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Тема 📚
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Период 🗓️
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Задания ЕГЭ ✅
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Базовый материал">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Повтор базового материала
-                        </th>
-                        <td class="px-6 py-4">
-                            Август-Сентябрь 2025
-                        </td>
-                        <td class="px-6 py-4">
-                            -
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Планиметрия">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Планиметрия (новые формулы, углубленное построение)
-                        </th>
-                        <td class="px-6 py-4">
-                            1-2 неделя Сентября 2025
-                        </td>
-                        <td class="px-6 py-4">
-                            1
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Векторы">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Векторы (новые формулы, новый счет, построение)
-                        </th>
-                        <td class="px-6 py-4">
-                            Сентябрь-Октябрь 2025
-                        </td>
-                        <td class="px-6 py-4">
-                            2
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Стереометрия">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Стереометрия (новое построение, формулы)
-                        </th>
-                        <td class="px-6 py-4">
-                            Октябрь-Ноябрь 2025
-                        </td>
-                        <td class="px-6 py-4">
-                            3
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Вероятность">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Вероятность
-                        </th>
-                        <td class="px-6 py-4">
-                            Сентябрь-Ноябрь 2025
-                        </td>
-                        <td class="px-6 py-4">
-                            4, 5
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Уравнения">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Уравнения
-                        </th>
-                        <td class="px-6 py-4">
-                            Сентябрь 2025 - Март 2026
-                        </td>
-                        <td class="px-6 py-4">
-                            6
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Вычисления и преобразования">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Вычисления и преобразования
-                        </th>
-                        <td class="px-6 py-4">
-                            Сентябрь 2025 - Март 2026
-                        </td>
-                        <td class="px-6 py-4">
-                            7
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Производная и первообразная">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Производная и первообразная
-                        </th>
-                        <td class="px-6 py-4">
-                            С Февраля 2026
-                        </td>
-                        <td class="px-6 py-4">
-                            8
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Неравенства">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Многочисленные неравенства разных видов
-                        </th>
-                        <td class="px-6 py-4">
-                            Сентябрь 2025 - Март 2026
-                        </td>
-                        <td class="px-6 py-4">
-                            9
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Текстовые задачи">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Текстовые задачи
-                        </th>
-                        <td class="px-6 py-4">
-                            Сентябрь 2025 - Апрель 2026; Сентябрь 2026 - Май 2027
-                        </td>
-                        <td class="px-6 py-4">
-                            10
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Графики функций">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Графики функций
-                        </th>
-                        <td class="px-6 py-4">
-                            Сентябрь 2025 - Март 2026
-                        </td>
-                        <td class="px-6 py-4">
-                            11, 12
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Повторение">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Повтор материала
-                        </th>
-                        <td class="px-6 py-4">
-                            Начало Августа 2026
-                        </td>
-                        <td class="px-6 py-4">
-                            -
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" data-topic="Вторая часть">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Подготовка ко 2-й части
-                        </th>
-                        <td class="px-6 py-4">
-                            Сентябрь 2026 - Май 2027
-                        </td>
-                        <td class="px-6 py-4">
-                            13, 14, 15, 16, 17, 18, 19
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="mt-8 bg-gray-100 p-6 rounded-lg shadow-inner flex flex-col items-center justify-center">
-            <h2 class="text-xl font-semibold mb-4 text-gray-800 text-center">Используйте сайт "Решу ЕГЭ" для решения задач 📝</h2>
-            <a href="https://math-ege.sdamgia.ru/" target="_blank" class="visit-btn flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                </svg>
-                Перейти на сайт
-            </a>
-        </div>
-
-        <h2 class="text-xl font-semibold mt-8 mb-4 text-gray-800">Материалы для подготовки ✨</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Секция с советами по обучению -->
-            <div class="bg-gray-50 p-6 rounded-lg shadow-inner">
-                <h2 class="text-xl font-semibold mb-4 text-gray-800">Получить советы по обучению 🧠</h2>
-                <div class="flex flex-col sm:flex-row gap-4 mb-4">
-                    <input type="text" id="topicInput" placeholder="Введите тему (напр. 'стереометрия')" class="flex-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <button id="getTipsBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md transition-colors">
-                        Получить совет ✨
-                    </button>
-                </div>
-                <div id="tipResult" class="mt-4 p-4 bg-white rounded-md border border-gray-200 hidden">
-                    <p id="tipText" class="text-gray-700"></p>
-                </div>
-            </div>
-
-            <!-- Секция для генерации подробного плана -->
-            <div class="bg-gray-50 p-6 rounded-lg shadow-inner">
-                <h2 class="text-xl font-semibold mb-4 text-gray-800">Детальный план по теме 🗺️</h2>
-                <p class="text-gray-600 mb-4 text-sm">Нажмите на любую строку в таблице, чтобы получить подробный список подтем! 👇</p>
-                <div id="detailedPlan" class="mt-4 p-4 bg-white rounded-md border border-gray-200 hidden">
-                    <p class="font-bold text-lg mb-2 text-gray-800">Подробный план для: <span id="detailedTopicName"></span></p>
-                    <ul id="planDetailsList" class="list-disc list-inside text-gray-700"></ul>
-                </div>
-            </div>
-
-            <!-- Секция для банка заданий -->
-            <div class="mt-8 bg-gray-50 p-6 rounded-lg shadow-inner md:col-span-2">
-                <h2 class="text-xl font-semibold mb-4 text-gray-800">Банк заданий для практики 📚</h2>
-                <p class="text-gray-600 mb-4 text-sm text-center">Перейдите на официальный сайт ФИПИ, чтобы решать реальные задания прошлых лет!</p>
-                <div class="flex justify-center mt-4">
-                    <a href="https://ege.fipi.ru/bank/index.php?proj=AC437B34557F88EA4115D2F374B0A07B" target="_blank" class="bank-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.76 0 5.26-1.12 7.08-2.92M12 21c-2.76 0-5.26-1.12-7.08-2.92M10.5 10.5h.008v.008h-.008v-.008ZM15 10.5h.008v.008H15v-.008ZM10.5 14.5h.008v.008h-.008v-.008ZM15 14.5h.008v.008H15v-.008Z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 7.5c0-.621-.504-1.125-1.125-1.125H5.625c-.621 0-1.125.504-1.125 1.125v4.5c0 .621.504 1.125 1.125 1.125h3.5v-2.25c0-.621.504-1.125 1.125-1.125h2.5c.621 0 1.125.504 1.125 1.125v2.25h3.5c.621 0 1.125-.504 1.125-1.125v-4.5Z" />
-                        </svg>
-                        Перейти к банку заданий
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Data for study topics and tips
+    <script type="text/babel">
+        // React-компонент, который содержит все приложение
+        const App = () => {
+            // Данные для советов и планов
             const studyData = {
                 'Базовый материал': {
                     tips: 'Лайфхак: Начинайте с самого простого. Не пытайтесь сразу объять необъятное. Цитата: "Самый большой секрет успеха — это последовательность." (Уильям Кэри)',
@@ -402,90 +158,186 @@
                     ]
                 }
             };
+            
+            // Состояние для хранения выбранной темы и введенного текста
+            const [selectedTopic, setSelectedTopic] = React.useState(null);
+            const [topicInput, setTopicInput] = React.useState('');
+            const [tipResult, setTipResult] = React.useState('');
+            const [showDetailedPlan, setShowDetailedPlan] = React.useState(false);
+            const [showTips, setShowTips] = React.useState(false);
 
-            try {
-                // UI elements
-                const getTipsBtn = document.getElementById('getTipsBtn');
-                const topicInput = document.getElementById('topicInput');
-                const tipResult = document.getElementById('tipResult');
-                const tipText = document.getElementById('tipText');
+            // Обработчик нажатия на строку в таблице
+            const handleRowClick = (topic) => {
+                setSelectedTopic(topic);
+                setShowDetailedPlan(true);
+            };
+
+            // Обработчик нажатия на кнопку "Получить совет"
+            const handleGetTips = () => {
+                const normalizedInput = topicInput.toLowerCase().trim();
+                let tip = 'К сожалению, по этой теме пока нет советов. Попробуйте ввести одну из тем из таблицы!';
                 
-                const detailedPlan = document.getElementById('detailedPlan');
-                const detailedTopicName = document.getElementById('detailedTopicName');
-                const planDetailsList = document.getElementById('planDetailsList');
-                
-                const planTable = document.getElementById('planTable');
-
-                // --- Event handlers ---
-
-                // Function to get and display study tip
-                function getStudyTip() {
-                    const topic = topicInput.value.toLowerCase().trim();
-                    let tip = 'К сожалению, по этой теме пока нет советов. Попробуйте ввести одну из тем из таблицы!';
-                    let found = false;
-
-                    // Simple search in data keys
-                    for (const key in studyData) {
-                        if (key.toLowerCase().includes(topic)) {
-                            tip = studyData[key].tips;
-                            found = true;
-                            break;
-                        }
+                let found = false;
+                for (const key in studyData) {
+                    if (key.toLowerCase().includes(normalizedInput)) {
+                        tip = studyData[key].tips;
+                        found = true;
+                        break;
                     }
+                }
+                
+                if (!found && normalizedInput === 'тригонометрия') {
+                    tip = 'При решении тригонометрических уравнений всегда используйте формулы приведения и помните про основные тригонометрические тождества. Это поможет упростить выражение. Цитата: "Знание — сила." (Фрэнсис Бэкон)';
+                }
+                
+                setTipResult(tip);
+                setShowTips(true);
+            };
+
+            return (
+                <div className="container bg-white rounded-xl p-8 shadow-2xl">
+                    <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">План подготовки к профильной математике (2025-2027) 🎓</h1>
+                    <p className="text-gray-600 mb-4 text-center">План в виде таблицы для удобного просмотра и навигации. Нажмите на любую строку, чтобы получить детальный план по теме. 💡</p>
+                    <p className="text-gray-600 mb-8 text-center">Для практики и решения задач используйте сайт <a href="https://math-ege.sdamgia.ru/" target="_blank" className="text-red-500 font-semibold hover:underline">Решу ЕГЭ</a>. 🚀</p>
                     
-                    if (!found && topic === 'тригонометрия') {
-                        tip = 'При решении тригонометрических уравнений всегда используйте формулы приведения и помните про основные тригонометрические тождества. Это поможет упростить выражение. Цитата: "Знание — сила." (Фрэнсис Бэкон)';
-                    }
-
-                    tipText.textContent = tip;
-                    tipResult.classList.remove('hidden');
-                }
-                
-                // Function to display detailed plan from data
-                function displayDetailedPlan(topic) {
-                    const data = studyData[topic];
+                    <div className="overflow-x-auto rounded-lg shadow-md mb-8">
+                        <table className="w-full text-left text-sm text-gray-500 rounded-lg">
+                            <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                                <tr>
+                                    <th scope="col" className="px-6 py-3">
+                                        Тема 📚
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                        Период 🗓️
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                        Задания ЕГЭ ✅
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {Object.keys(studyData).map((topic) => (
+                                    <tr key={topic} className="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handleRowClick(topic)}>
+                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                            {topic}
+                                        </th>
+                                        <td className="px-6 py-4">
+                                            {topic === 'Базовый материал' && 'Август-Сентябрь 2025'}
+                                            {topic === 'Планиметрия' && '1-2 неделя Сентября 2025'}
+                                            {topic === 'Векторы' && 'Сентябрь-Октябрь 2025'}
+                                            {topic === 'Стереометрия' && 'Октябрь-Ноябрь 2025'}
+                                            {topic === 'Вероятность' && 'Сентябрь-Ноябрь 2025'}
+                                            {topic === 'Уравнения' && 'Сентябрь 2025 - Март 2026'}
+                                            {topic === 'Вычисления и преобразования' && 'Сентябрь 2025 - Март 2026'}
+                                            {topic === 'Производная и первообразная' && 'С Февраля 2026'}
+                                            {topic === 'Неравенства' && 'Сентябрь 2025 - Март 2026'}
+                                            {topic === 'Текстовые задачи' && 'Сентябрь 2025 - Апрель 2026; Сентябрь 2026 - Май 2027'}
+                                            {topic === 'Графики функций' && 'Сентябрь 2025 - Март 2026'}
+                                            {topic === 'Повторение' && 'Начало Августа 2026'}
+                                            {topic === 'Вторая часть' && 'Сентябрь 2026 - Май 2027'}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {topic === 'Базовый материал' && '-'}
+                                            {topic === 'Планиметрия' && '1'}
+                                            {topic === 'Векторы' && '2'}
+                                            {topic === 'Стереометрия' && '3'}
+                                            {topic === 'Вероятность' && '4, 5'}
+                                            {topic === 'Уравнения' && '6'}
+                                            {topic === 'Вычисления и преобразования' && '7'}
+                                            {topic === 'Производная и первообразная' && '8'}
+                                            {topic === 'Неравенства' && '9'}
+                                            {topic === 'Текстовые задачи' && '10'}
+                                            {topic === 'Графики функций' && '11, 12'}
+                                            {topic === 'Повторение' && '-'}
+                                            {topic === 'Вторая часть' && '13, 14, 15, 16, 17, 18, 19'}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                     
-                    if (data && data.plan) {
-                        detailedTopicName.textContent = topic;
-                        planDetailsList.innerHTML = '';
-                        data.plan.forEach(item => {
-                            const li = document.createElement('li');
-                            li.textContent = item;
-                            planDetailsList.appendChild(li);
-                        });
-                        detailedPlan.classList.remove('hidden');
-                    } else {
-                        detailedTopicName.textContent = topic;
-                        planDetailsList.innerHTML = '<li>К сожалению, подробный план по этой теме не найден.</li>';
-                        detailedPlan.classList.remove('hidden');
-                    }
-                }
+                    <div className="mt-8 bg-gray-100 p-6 rounded-lg shadow-inner flex flex-col items-center justify-center">
+                        <h2 className="text-xl font-semibold mb-4 text-gray-800 text-center">Используйте сайт "Решу ЕГЭ" для решения задач 📝</h2>
+                        <a href="https://math-ege.sdamgia.ru/" target="_blank" className="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-md shadow transition-colors flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                            Перейти на сайт
+                        </a>
+                    </div>
+                    
+                    <h2 className="text-xl font-semibold mt-8 mb-4 text-gray-800">Материалы для подготовки ✨</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Секция с советами по обучению */}
+                        <div className="bg-gray-50 p-6 rounded-lg shadow-inner">
+                            <h2 className="text-xl font-semibold mb-4 text-gray-800">Получить советы по обучению 🧠</h2>
+                            <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                                <input 
+                                    type="text" 
+                                    id="topicInput" 
+                                    placeholder="Введите тему (напр. 'стереометрия')" 
+                                    className="flex-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    value={topicInput}
+                                    onChange={(e) => setTopicInput(e.target.value)}
+                                />
+                                <button 
+                                    id="getTipsBtn" 
+                                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md transition-colors"
+                                    onClick={handleGetTips}
+                                >
+                                    Получить совет ✨
+                                </button>
+                            </div>
+                            {showTips && (
+                                <div id="tipResult" className="mt-4 p-4 bg-white rounded-md border border-gray-200">
+                                    <p id="tipText" className="text-gray-700">{tipResult}</p>
+                                </div>
+                            )}
+                        </div>
 
-                // Add event listeners
-                if (getTipsBtn) {
-                    getTipsBtn.addEventListener('click', getStudyTip);
-                }
+                        {/* Секция для генерации подробного плана */}
+                        <div className="bg-gray-50 p-6 rounded-lg shadow-inner">
+                            <h2 className="text-xl font-semibold mb-4 text-gray-800">Детальный план по теме 🗺️</h2>
+                            <p className="text-gray-600 mb-4 text-sm">Нажмите на любую строку в таблице, чтобы получить подробный список подтем! 👇</p>
+                            {showDetailedPlan && selectedTopic && (
+                                <div id="detailedPlan" className="mt-4 p-4 bg-white rounded-md border border-gray-200">
+                                    <p className="font-bold text-lg mb-2 text-gray-800">Подробный план для: <span id="detailedTopicName">{selectedTopic}</span></p>
+                                    <ul id="planDetailsList" className="list-disc list-inside text-gray-700">
+                                        {studyData[selectedTopic]?.plan ? (
+                                            studyData[selectedTopic].plan.map((item, index) => (
+                                                <li key={index}>{item}</li>
+                                            ))
+                                        ) : (
+                                            <li>К сожалению, подробный план по этой теме не найден.</li>
+                                        )}
+                                    </ul>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    
+                    {/* Секция для банка заданий */}
+                    <div className="mt-8 bg-gray-50 p-6 rounded-lg shadow-inner md:col-span-2">
+                        <h2 className="text-xl font-semibold mb-4 text-gray-800">Банк заданий для практики 📚</h2>
+                        <p className="text-gray-600 mb-4 text-sm text-center">Перейдите на официальный сайт ФИПИ, чтобы решать реальные задания прошлых лет!</p>
+                        <div className="flex justify-center mt-4">
+                            <a href="https://ege.fipi.ru/bank/index.php?proj=AC437B34557F88EA4115D2F374B0A07B" target="_blank" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-md shadow transition-colors flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.76 0 5.26-1.12 7.08-2.92M12 21c-2.76 0-5.26-1.12-7.08-2.92M10.5 10.5h.008v.008h-.008v-.008ZM15 10.5h.008v.008H15v-.008ZM10.5 14.5h.008v.008h-.008v-.008ZM15 14.5h.008v.008H15v-.008Z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 7.5c0-.621-.504-1.125-1.125-1.125H5.625c-.621 0-1.125.504-1.125 1.125v4.5c0 .621.504 1.125 1.125 1.125h3.5v-2.25c0-.621.504-1.125 1.125-1.125h2.5c.621 0 1.125.504 1.125 1.125v2.25h3.5c.621 0 1.125-.504 1.125-1.125v-4.5Z" />
+                                </svg>
+                                Перейти к банку заданий
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
 
-                // Handle table row clicks
-                if (planTable) {
-                    planTable.querySelectorAll('tbody tr').forEach(row => {
-                        row.addEventListener('click', () => {
-                            const topic = row.getAttribute('data-topic');
-                            if (topic) {
-                                displayDetailedPlan(topic);
-                            }
-                        });
-                    });
-                }
-            } catch (error) {
-                // Display a user-friendly error message if the script fails
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'mt-4 p-4 bg-red-100 rounded-md border border-red-400 text-red-700';
-                errorDiv.textContent = 'Ошибка: Не удалось загрузить интерактивные элементы. Пожалуйста, убедитесь, что ваш браузер не блокирует скрипты.';
-                document.querySelector('.container').appendChild(errorDiv);
-                console.error('An error occurred during script execution:', error);
-            }
-        });
+        // Запуск приложения
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
 </body>
 </html>
