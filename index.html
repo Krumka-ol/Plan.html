@@ -16,7 +16,9 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
+            background: #fdf2f8; /* Очень светлый розовый */
+            background-image: url('https://www.transparenttextures.com/patterns/pinstripe.png'); /* Фон с облаками */
+            background-repeat: repeat;
             color: #1f2937;
             display: flex;
             justify-content: center;
@@ -26,7 +28,35 @@
         .container {
             width: 95%;
             max-width: 1200px;
-            padding: 20px;
+            padding: 2.5rem;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .table-row-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background-color: #fff0f6; /* Розовый оттенок при наведении */
+        }
+        .link-btn {
+            background-color: #db2777; /* Розовый */
+            color: white;
+            font-weight: bold;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .link-btn:hover {
+            background-color: #be185d;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -53,7 +83,10 @@
                 'Планиметрия': {
                     tips: 'Лайфхак: Визуализируйте! Рисуйте чертежи разных масштабов, чтобы увидеть неочевидные связи. Цитата: "Геометрия — это искусство хорошего рассуждения на плохих чертежах." (Георг Пойа)',
                     plan: [
-                        'Изучение основных теорем: теорема Пифагора, теорема синусов и косинусов.',
+                        'Изучение основных теорем: теорема П
+
+
+ифагора, теорема синусов и косинусов.',
                         'Работа с подобием и равенством треугольников.',
                         'Решение задач на площади и периметры многоугольников.',
                         'Изучение свойств окружности и ее элементов.'
@@ -110,7 +143,10 @@
                         'Тригонометрические преобразования.',
                         'Смешанные задачи на преобразования.'
                     ],
-                    link: 'https://disk.yandex.ru/i/cDq0gmqGdVJevA'
+                    link:
+
+
+'https://disk.yandex.ru/i/cDq0gmqGdVJevA'
                 },
                 'Производная и первообразная': {
                     tips: 'Лайфхак: Поймите, что производная показывает скорость изменения, а первообразная — накопление. Это ключевой момент для интуитивного понимания. Цитата: "Единственный путь сделать великую работу — это любить то, что делаешь." (Стив Джобс)',
@@ -168,11 +204,24 @@
                         'Изучение методов решения задач повышенной сложности.',
                         'Подробный разбор заданий 13-19.',
                         'Практика в оформлении решений.',
-                        'Разбор критериев оценивания.'
+                        'Разбор крите
+
+
+риев оценивания.'
                     ],
                     // Преобразуем в массив и добавляем новую ссылку
                     link: ['https://disk.yandex.ru/i/cDq0gmqGdVJevA', 'https://disk.yandex.ru/i/wjrwq250Z0kl7w']
                 }
+            };
+
+            const basicMaterials = {
+                'База по геометрии': 'https://disk.yandex.ru/i/71gChdyXGUeXmA',
+                'Действия с обыкновенными и десятичными дробями': 'https://disk.yandex.ru/i/M0mhkxhPUQTi6w',
+                'Степени и корни': 'https://disk.yandex.ru/i/gT4iBjAETjWkOg',
+                'Графики функций': 'https://disk.yandex.ru/i/3uMZ_I0sKWKpAA',
+                'Неравенства': 'https://disk.yandex.ru/d/TdOZDCQ2G7d8qg',
+                'Алгебраическая и геометрическая прогрессия': 'https://disk.yandex.ru/i/t1mjB6EUi8Ufeg',
+                'Формула сокращенного умножения и дискриминант': 'https://disk.yandex.ru/d/2IBny2v8wsCpqw'
             };
 
             // Состояние для хранения выбранной темы и введенного текста
@@ -239,7 +288,9 @@
                                 rel="noopener noreferrer"
                                 className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-md shadow transition-colors flex items-center justify-center gap-2"
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-6 h-6">
+
+
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-6 h-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9.75v6.75m-6-6h12m1.5 0a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6.75v4.5A2.25 2.25 0 0 0 5.25 13.5h7.5M12 9.75V21" />
                                 </svg>
                                 {`Скачать пособие ${index + 1}`}
@@ -289,7 +340,9 @@
                                             {topic === 'Текстовые задачи' && 'Сентябрь 2025 - Апрель 2026; Сентябрь 2026 - Май 2027'}
                                             {topic === 'Графики функций' && 'Сентябрь 2025 - Март 2026'}
                                             {topic === 'Повторение' && 'Начало Августа 2026'}
-                                            {topic === 'Вторая часть' && 'Сентябрь 2026 - Май 2027'}
+
+
+{topic === 'Вторая часть' && 'Сентябрь 2026 - Май 2027'}
                                         </td>
                                         <td className="px-6 py-4">
                                             {topic === 'Базовый материал' && '-'}
@@ -321,12 +374,33 @@
                             Перейти на сайт
                         </a>
                     </div>
+                    
+                    {/* Новая секция для базовых материалов */}
+                    <div className="mt-8 bg-pink-100 p-6 rounded-lg shadow-inner">
+                        <h2 className="text-xl font-semibold mb-4 text-gray-800">Базовые материалы по математике 📖</h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {Object.entries(basicMaterials).map(([name, link]) => (
+                                <a 
+                                    key={name} 
+                                    href={link} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-md shadow-lg transition-colors flex items-center justify-center text-center text-sm"
+                                >
+                                    {name}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
 
                     <h2 className="text-xl font-semibold mt-8 mb-4 text-gray-800">Материалы для подготовки ✨</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {/* Секция с советами по обучению */}
                         <div className="bg-gray-50 p-6 rounded-lg shadow-inner">
-                            <h2 className="text-xl font-semibold mb-4 text-gray-800">Получить советы по обучению 🧠</h2>
+                            <h2 className="text-xl font-
+
+
+semibold mb-4 text-gray-800">Получить советы по обучению 🧠</h2>
                             <div className="flex flex-col sm:flex-row gap-4 mb-4">
                                 <input
                                     type="text"
@@ -380,7 +454,9 @@
                                     placeholder="Начните вводить или вставлять текст здесь..."
                                     value={topicNotes[selectedTopic] || ''}
                                     onChange={handleNotesChange}
-                                ></textarea>
+
+
+></textarea>
                                 {renderDownloadButtons()}
                             </div>
                         )}
@@ -403,7 +479,7 @@
                     
                     {/* Кредитная строка в самом низу */}
                     <div className="mt-8 text-center text-xs text-gray-400">
-                        Автор Krumka
+                        Создано Крумка О.В.
                     </div>
                 </div>
             );
